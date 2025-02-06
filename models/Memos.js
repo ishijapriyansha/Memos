@@ -1,6 +1,10 @@
 const mongoose=require('mongoose') 
-
+const {Schema}=mongoose;
 const MemosSchema = new Schema({
+    user:{      //kindof a foreign key of another model
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user'                 
+    },
     title:{
         type:String,
         required:true
