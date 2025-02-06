@@ -38,4 +38,28 @@ router.post('/addmemo', fetchUser, [
         }
     })
 
+
+    //update a memo. login needed.
+
+    router.post('/updatememo/:id', fetchUser, async (req , res)=>{
+        const {title, description, tag} = req.body
+        const newMemo=[];
+        if(title){ newMemo.title=title}
+        if(description){ newMemo.description=description}
+        if(tag){newMemo.tag=tag}
+
+
+        //req.params only works with route parameters defined with : in the route path.
+        //req.params is an object in Express that stores route parameters from a URL. These parameters are part of the URL path, and are used to capture dynamic values.
+        let memo= await Memos.findById(req.params.id);
+        if(!memo) {return res.status(404).send("Not found")}
+        //to ensure somebody is not trying to edit memos on some other user's account
+        if(memo.user.toString()!=req.user.id){return res.status(401).send("Not allowed!") }
+
+        memo= await NotBeforeError.findByIdAndUpdate(req,params.id, {$set: newMemo}, {new:true})
+        res.json({memo});
+    }
+
+    )
+
 module.exports = router
