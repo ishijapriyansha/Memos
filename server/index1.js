@@ -14,5 +14,5 @@ app.use('/api/auth',require('./routes/auth'))
 app.use('/api/memos',require('./routes/memos'))
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Memos server listening on port ${port}`)
 })
