@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar';
+import Welcome from './components/Welcome';
+import About from './components/About';
+import MemoState from './context/memos/MemoState';
+import Memos from "./components/Memos";
+import Alert from "./components/Alert";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MemoState>
+      <BrowserRouter>
+        <Navbar />
+        <Alert message="Memos by Ishija"/>
+        <div className='container'>
+        <Routes>
+          <Route exact path="/" element={<Welcome />}/>
+          <Route exact path="/about" element={ <About />}/>
+        </Routes>
+        </div>
+        
+      </BrowserRouter>
+      </MemoState>
+     
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
