@@ -49,10 +49,32 @@ const MemoState = (props)=>{
         }
       ]
       const [memos,setMemos]=useState(memosInitial)
+      //add a memo
+      const addMemo=(title, description, tag)=>{
+        console.log("adding a new memo")
+        const memo={
+            "_id": "67a5189660d82e79401da5dcd",
+            "user": "67a1f10b1d0a7635987da851c",
+            "title": "Added note",
+            "description": "Through function",
+            "tag": "tagg",
+            "date": "2025-02-06T20:16:22.748Z",
+            "__v": 0
+          };
+        setMemos([...memos, memo]);
+      }
+      //edit a memo
+      const editMemo=()=>{
+
+      }
+      //delete a memo
+      const deleteMemo=()=>{
+
+      }
 
 
     return(
-    <MemoContext.Provider value={{memos, setMemos}}>
+    <MemoContext.Provider value={{memos,addMemo,editMemo,deleteMemo}}>
         {props.children}
     </MemoContext.Provider>
     )
