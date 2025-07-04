@@ -25,7 +25,8 @@ try{
       name:req.body.name,
       email:req.body.email,
       password:secPass
-}).then(console.log("User created successfully"))
+});
+(console.log("User created successfully"))
 
 const data={
    user:{

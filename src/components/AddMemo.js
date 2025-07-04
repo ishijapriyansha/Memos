@@ -8,14 +8,11 @@ export default function AddMemo() {
 
     const handleClick=(a)=>{
         a.preventDefault();
-        addMemo(memo);
+        addMemo(memo.title, memo.desc, memo.tag);
     }
     const onChange=(a)=>{
         setMemo({...memo, [a.target.name]:a.target.value })
     }
-
-
-
 
 
   return (
@@ -34,7 +31,7 @@ export default function AddMemo() {
     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
     <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+  <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
 </form>
 
 
